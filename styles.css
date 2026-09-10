@@ -116,3 +116,33 @@ main {
 .achievement.completed h3 {
     text-decoration: line-through;
 }
+
+.category {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 9px;
+    border-radius: 6px;
+    background: #2b2b3d;
+    color: #cfcfe8;
+    font-size: 12px;
+}
+
+.category-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.category-filters button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    background: #242432;
+    color: white;
+}
+
+.category-filters button:hover {
+    background: #3a3a50;
+}
