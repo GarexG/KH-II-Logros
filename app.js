@@ -302,7 +302,13 @@ const achievements = [
     description: "Derrota todas las réplicas Data de Organization XIII.",
     category: "Jefes",
     subtasks: [
-        "Xemnas",
+        {
+            name: "Xemnas",
+            subtasks: [
+                "Primera batalla",
+                "Batalla final"
+            ]
+        },
         "Xigbar",
         "Xaldin",
         "Vexen",
@@ -352,7 +358,10 @@ let subtaskProgress =
     JSON.parse(localStorage.getItem("kh2SubtaskProgress")) || {};    
 
 let openSubtasks =
-    JSON.parse(localStorage.getItem("kh2OpenSubtasks")) || {};    
+    JSON.parse(localStorage.getItem("kh2OpenSubtasks")) || {};
+    
+let openNestedSubtasks =
+    JSON.parse(localStorage.getItem("kh2OpenNestedSubtasks")) || {};    
 
 let currentFilter = "all";
 let currentCategory = "all";
@@ -391,6 +400,211 @@ function saveOpenSubtasks() {
     );
 }
 
+function saveOpenNestedSubtasks() {
+    localStorage.setItem(
+        "kh2OpenNestedSubtasks",
+        JSON.stringify(openNestedSubtasks)
+    );
+}
+
+function getSubtaskName(subtask) {
+
+    if (typeof subtask === "string") {
+        return subtask;
+    }
+
+    return subtask.name;
+}
+
+function isSubtaskComplete(achievement, subtask) {
+
+    const name = getSubtaskName(subtask);
+
+    // Subtarea normal
+    if (typeof subtask === "string") {
+        return subtaskProgress[achievement.id]?.[name] === true;
+    }
+
+    // Subtarea que contiene hijos
+    if (subtask.subtasks) {
+    return subtaskProgress[achievement.id]?.[`${name}-completed`] === true;
+}
+
+    return false;
+}
+
+
+function setSubtaskComplete(achievement, subtask, checked) {
+
+    const name = getSubtaskName(subtask);
+
+    if (!subtaskProgress[achievement.id]) {
+        subtaskProgress[achievement.id] = {};
+    }
+
+    // Subtarea normal
+    if (typeof subtask === "string") {
+
+        subtaskProgress[achievement.id][name] =
+            checked;
+
+        return;
+    }
+
+    // Subtarea con hijos
+    if (subtask.subtasks) {
+
+        if (
+            !subtaskProgress[achievement.id][name] ||
+            typeof subtaskProgress[achievement.id][name] !== "object"
+        ) {
+            subtaskProgress[achievement.id][name] = {};
+        }
+
+        subtask.subtasks.forEach(child => {
+            subtaskProgress[achievement.id][name][child] =
+                checked;
+        });
+    }
+}
+
+function createNestedSubtasks(achievement, subtask) {
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "nested-wrapper";
+
+    if (!subtask.subtasks) {
+        return wrapper;
+    }
+
+    const parentName =
+        getSubtaskName(subtask);
+
+    const menuId =
+        `${achievement.id}-${parentName}`;
+
+    const isOpen =
+        openNestedSubtasks[menuId] === true;
+
+    // Botón para abrir/cerrar
+    const toggle =
+        document.createElement("button");
+
+    toggle.className =
+        "nested-toggle";
+
+    const completedChildren =
+        subtask.subtasks.filter(child =>
+            subtaskProgress[achievement.id]?.[parentName]?.[child] === true
+        ).length;
+
+    toggle.textContent =
+        `${isOpen ? "▲" : "▼"} Detalles (${completedChildren}/${subtask.subtasks.length})`;
+
+    // Contenedor
+    const container =
+        document.createElement("div");
+
+    container.className =
+        isOpen
+            ? "nested-subtasks"
+            : "nested-subtasks hidden";
+
+    if (!subtaskProgress[achievement.id]) {
+        subtaskProgress[achievement.id] = {};
+    }
+
+    if (
+        !subtaskProgress[achievement.id][parentName] ||
+        typeof subtaskProgress[achievement.id][parentName] !== "object"
+    ) {
+        subtaskProgress[achievement.id][parentName] = {};
+    }
+
+    subtask.subtasks.forEach(child => {
+
+        const childItem =
+            document.createElement("label");
+
+        childItem.className =
+            "nested-subtask-item";
+
+        const checked =
+            subtaskProgress[achievement.id][parentName]?.[child] === true;
+
+        childItem.innerHTML = `
+            <input
+                type="checkbox"
+                ${checked ? "checked" : ""}
+            >
+            <span>${child}</span>
+        `;
+
+        const childCheckbox =
+            childItem.querySelector("input");
+
+        childCheckbox.addEventListener("change", () => {
+
+            subtaskProgress[achievement.id][parentName][child] =
+                childCheckbox.checked;
+
+            const allChildrenCompleted =
+                subtask.subtasks.every(item =>
+                   subtaskProgress[achievement.id][parentName]?.[item] === true
+                );
+
+            if (allChildrenCompleted) {
+                subtaskProgress[achievement.id][`${parentName}-completed`] = true;
+            } else {
+                subtaskProgress[achievement.id][`${parentName}-completed`] = false;
+            }
+
+            const allAchievementSubtasksCompleted =
+                achievement.subtasks.every(task =>
+                isSubtaskComplete(achievement, task)
+                );
+
+            progress[achievement.id] =
+                allAchievementSubtasksCompleted;
+
+            saveProgress();
+
+            saveSubtaskProgress();
+
+            renderAchievements();
+            updateProgress();
+        });
+
+        container.appendChild(childItem);
+    });
+
+    toggle.addEventListener("click", () => {
+
+        const newState =
+            !openNestedSubtasks[menuId];
+
+        openNestedSubtasks[menuId] =
+            newState;
+
+        saveOpenNestedSubtasks();
+
+        container.classList.toggle(
+            "hidden",
+            !newState
+        );
+
+        toggle.textContent =
+            `${newState ? "▲" : "▼"} Detalles (${completedChildren}/${subtask.subtasks.length})`;
+    });
+
+    wrapper.appendChild(toggle);
+    wrapper.appendChild(container);
+
+    return wrapper;
+}
 
 function renderAchievements() {
 
@@ -464,7 +678,11 @@ function renderAchievements() {
             }
 
             achievement.subtasks.forEach(subtask => {
-                subtaskProgress[achievement.id][subtask] =
+
+                const subtaskName =
+                    getSubtaskName(subtask);
+
+                subtaskProgress[achievement.id][subtaskName] =
                     checkbox.checked;
             });
 
@@ -481,9 +699,9 @@ function renderAchievements() {
     if (achievement.subtasks) {
 
     const completedSubtasks =
-        achievement.subtasks.filter(task =>
-            subtaskProgress[achievement.id]?.[task] === true
-        ).length;
+    achievement.subtasks.filter(subtask =>
+        isSubtaskComplete(achievement, subtask)
+    ).length;
 
     // Primero averiguamos si este menú estaba abierto
     const isOpen =
@@ -510,11 +728,14 @@ function renderAchievements() {
 
     achievement.subtasks.forEach(subtask => {
 
-        const checked =
-            subtaskProgress[achievement.id]?.[subtask] === true;
+    const subtaskName =
+        getSubtaskName(subtask);
 
-        const subtaskItem =
-            document.createElement("label");
+    const checked =
+        isSubtaskComplete(achievement, subtask);
+
+    const subtaskItem =
+        document.createElement("label");
 
         subtaskItem.className =
             "subtask-item";
@@ -524,7 +745,7 @@ function renderAchievements() {
                 type="checkbox"
                 ${checked ? "checked" : ""}
             >
-            <span>${subtask}</span>
+            <span>${subtaskName}</span>
         `;
 
         const subtaskCheckbox =
@@ -532,30 +753,44 @@ function renderAchievements() {
 
         subtaskCheckbox.addEventListener("change", () => {
 
-            if (!subtaskProgress[achievement.id]) {
-                subtaskProgress[achievement.id] = {};
-            }
+    setSubtaskComplete(
+        achievement,
+        subtask,
+        subtaskCheckbox.checked
+    );
 
-            subtaskProgress[achievement.id][subtask] =
-                subtaskCheckbox.checked;
+    const allCompleted =
+        achievement.subtasks.every(task =>
+            isSubtaskComplete(achievement, task)
+        );
 
-            const allCompleted =
-                achievement.subtasks.every(task =>
-                    subtaskProgress[achievement.id]?.[task] === true
-                );
+    progress[achievement.id] =
+        allCompleted;
 
-            progress[achievement.id] =
-                allCompleted;
+    saveSubtaskProgress();
+    saveProgress();
 
-            saveSubtaskProgress();
-            saveProgress();
-
-            renderAchievements();
-            
-            updateProgress();
-        });
+    renderAchievements();
+    updateProgress();
+});
 
         subtaskContainer.appendChild(subtaskItem);
+
+            if (
+                typeof subtask === "object" &&
+                subtask.subtasks
+                ) {
+
+                    const nestedContainer =
+                    createNestedSubtasks(
+                    achievement,
+                    subtask
+                 );
+
+            subtaskContainer.appendChild(
+            nestedContainer
+            );
+        }
     });
 
     // Abrir/cerrar submenu

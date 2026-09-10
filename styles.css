@@ -210,3 +210,57 @@ main {
 .hidden {
     display: none;
 }
+
+.nested-subtasks {
+    grid-column: 1 / -1;
+
+    margin-left: 25px;
+    margin-bottom: 10px;
+
+    padding: 12px;
+
+    background: #161620;
+
+    border-left: 2px solid #444;
+    border-radius: 6px;
+}
+
+.nested-subtask-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 6px 8px;
+
+    color: #bbb;
+
+    cursor: pointer;
+}
+
+.nested-subtask-item:hover {
+    background: #20202c;
+    border-radius: 5px;
+}
+
+.nested-wrapper {
+    grid-column: 1 / -1;
+    margin-left: 25px;
+}
+
+.nested-toggle {
+    padding: 6px 10px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: #252535;
+    color: #ccc;
+
+    cursor: pointer;
+
+    margin-bottom: 8px;
+}
+
+.nested-toggle:hover {
+    background: #343449;
+}
