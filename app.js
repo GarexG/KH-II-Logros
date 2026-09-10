@@ -232,10 +232,25 @@ const achievements = [
 
     // MINIJUEGOS
     {
-        id: "mushroom-master",
-        name: "Mushroom Master",
-        description: "Satisface a todos los miembros de Mushroom XIII.",
-        category: "Minijuegos"
+    id: "mushroom-master",
+    name: "Mushroom Master",
+    description: "Satisface a todos los miembros de Mushroom XIII.",
+    category: "Minijuegos",
+    subtasks: [
+        "Mushroom I",
+        "Mushroom II",
+        "Mushroom III",
+        "Mushroom IV",
+        "Mushroom V",
+        "Mushroom VI",
+        "Mushroom VII",
+        "Mushroom VIII",
+        "Mushroom IX",
+        "Mushroom X",
+        "Mushroom XI",
+        "Mushroom XII",
+        "Mushroom XIII"
+    ]
     },
     {
         id: "pro-skater",
@@ -282,10 +297,25 @@ const achievements = [
         category: "Jefes"
     },
     {
-        id: "rule-them-all",
-        name: "To Rule Them All",
-        description: "Derrota todas las réplicas Data de Organization XIII.",
-        category: "Jefes"
+    id: "rule-them-all",
+    name: "To Rule Them All",
+    description: "Derrota todas las réplicas Data de Organization XIII.",
+    category: "Jefes",
+    subtasks: [
+        "Xemnas",
+        "Xigbar",
+        "Xaldin",
+        "Vexen",
+        "Lexaeus",
+        "Zexion",
+        "Saïx",
+        "Axel",
+        "Demyx",
+        "Luxord",
+        "Marluxia",
+        "Larxene",
+        "Roxas"
+    ]
     },
     {
         id: "corroded-darkness",
@@ -317,6 +347,12 @@ const achievements = [
 
 let progress =
     JSON.parse(localStorage.getItem("kh2Progress")) || {};
+    
+let subtaskProgress =
+    JSON.parse(localStorage.getItem("kh2SubtaskProgress")) || {};    
+
+let openSubtasks =
+    JSON.parse(localStorage.getItem("kh2OpenSubtasks")) || {};    
 
 let currentFilter = "all";
 let currentCategory = "all";
@@ -338,6 +374,20 @@ function saveProgress() {
     localStorage.setItem(
         "kh2Progress",
         JSON.stringify(progress)
+    );
+}
+
+function saveSubtaskProgress() {
+    localStorage.setItem(
+        "kh2SubtaskProgress",
+        JSON.stringify(subtaskProgress)
+    );
+}
+
+function saveOpenSubtasks() {
+    localStorage.setItem(
+        "kh2OpenSubtasks",
+        JSON.stringify(openSubtasks)
     );
 }
 
@@ -375,47 +425,165 @@ function renderAchievements() {
 
     filteredAchievements.forEach(achievement => {
 
-        const completed =
-            progress[achievement.id] === true;
+    const completed =
+        progress[achievement.id] === true;
 
-        const card =
-            document.createElement("div");
+    const card =
+        document.createElement("div");
 
-        card.className =
-            completed
-                ? "achievement completed"
-                : "achievement";
+    card.className =
+        completed
+            ? "achievement completed"
+            : "achievement";
 
-        card.innerHTML = `
-    <input
-        type="checkbox"
-        ${completed ? "checked" : ""}
-    >
+    card.innerHTML = `
+        <input
+            type="checkbox"
+            ${completed ? "checked" : ""}
+        >
 
-    <div>
-        <h3>${achievement.name}</h3>
-        <p>${achievement.description}</p>
-        <span class="category">${achievement.category}</span>
-    </div>
-`;
+        <div>
+            <h3>${achievement.name}</h3>
+            <p>${achievement.description}</p>
+            <span class="category">${achievement.category}</span>
+        </div>
+    `;
 
-        const checkbox =
-            card.querySelector("input");
+    const checkbox =
+        card.querySelector("input");
 
-        checkbox.addEventListener("change", () => {
+    checkbox.addEventListener("change", () => {
+
+        progress[achievement.id] =
+            checkbox.checked;
+
+        if (achievement.subtasks) {
+
+            if (!subtaskProgress[achievement.id]) {
+                subtaskProgress[achievement.id] = {};
+            }
+
+            achievement.subtasks.forEach(subtask => {
+                subtaskProgress[achievement.id][subtask] =
+                    checkbox.checked;
+            });
+
+            saveSubtaskProgress();
+        }
+
+        saveProgress();
+
+        renderAchievements();
+        updateProgress();
+    });
+
+    // AQUÍ VAN LAS SUBTAREAS
+    if (achievement.subtasks) {
+
+    const completedSubtasks =
+        achievement.subtasks.filter(task =>
+            subtaskProgress[achievement.id]?.[task] === true
+        ).length;
+
+    // Primero averiguamos si este menú estaba abierto
+    const isOpen =
+        openSubtasks[achievement.id] === true;
+
+    // Botón para abrir/cerrar
+    const toggleButton =
+        document.createElement("button");
+
+    toggleButton.className =
+        "subtask-toggle";
+
+    toggleButton.textContent =
+        `${isOpen ? "▲" : "▼"} Ver progreso (${completedSubtasks}/${achievement.subtasks.length})`;
+
+    // Contenedor de subtareas
+    const subtaskContainer =
+        document.createElement("div");
+
+    subtaskContainer.className =
+        isOpen
+            ? "subtask-container"
+            : "subtask-container hidden";
+
+    achievement.subtasks.forEach(subtask => {
+
+        const checked =
+            subtaskProgress[achievement.id]?.[subtask] === true;
+
+        const subtaskItem =
+            document.createElement("label");
+
+        subtaskItem.className =
+            "subtask-item";
+
+        subtaskItem.innerHTML = `
+            <input
+                type="checkbox"
+                ${checked ? "checked" : ""}
+            >
+            <span>${subtask}</span>
+        `;
+
+        const subtaskCheckbox =
+            subtaskItem.querySelector("input");
+
+        subtaskCheckbox.addEventListener("change", () => {
+
+            if (!subtaskProgress[achievement.id]) {
+                subtaskProgress[achievement.id] = {};
+            }
+
+            subtaskProgress[achievement.id][subtask] =
+                subtaskCheckbox.checked;
+
+            const allCompleted =
+                achievement.subtasks.every(task =>
+                    subtaskProgress[achievement.id]?.[task] === true
+                );
 
             progress[achievement.id] =
-                checkbox.checked;
+                allCompleted;
 
+            saveSubtaskProgress();
             saveProgress();
 
             renderAchievements();
-
+            
             updateProgress();
         });
 
-        achievementList.appendChild(card);
+        subtaskContainer.appendChild(subtaskItem);
     });
+
+    // Abrir/cerrar submenu
+    toggleButton.addEventListener("click", () => {
+
+        const newState =
+            !openSubtasks[achievement.id];
+
+        openSubtasks[achievement.id] =
+            newState;
+
+        saveOpenSubtasks();
+
+        subtaskContainer.classList.toggle(
+            "hidden",
+            !newState
+        );
+
+        toggleButton.textContent =
+            `${newState ? "▲" : "▼"} Ver progreso (${completedSubtasks}/${achievement.subtasks.length})`;
+    });
+
+    card.appendChild(toggleButton);
+    card.appendChild(subtaskContainer);
+}
+
+    achievementList.appendChild(card);
+});
 }
 
 

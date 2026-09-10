@@ -91,14 +91,21 @@ main {
     padding: 20px;
     margin-bottom: 15px;
     border-radius: 10px;
-    display: flex;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
     gap: 15px;
-    align-items: flex-start;
+
+    align-items: start;
 }
 
-.achievement input {
+.achievement > input {
     margin-top: 6px;
     transform: scale(1.4);
+}
+
+.achievement > div:nth-child(2) {
+    grid-column: 2;
 }
 
 .achievement h3 {
@@ -145,4 +152,61 @@ main {
 
 .category-filters button:hover {
     background: #3a3a50;
+}
+
+.subtask-container {
+    grid-column: 2;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    width: 100%;
+    margin-top: 5px;
+    padding-top: 15px;
+
+    border-top: 1px solid #333;
+}
+
+.subtask-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 10px;
+
+    background: #20202c;
+    border-radius: 6px;
+
+    color: #ccc;
+    cursor: pointer;
+}
+
+.subtask-item input {
+    margin: 0;
+    transform: scale(1.15);
+}
+
+.subtask-toggle {
+    grid-column: 2;
+
+    width: fit-content;
+
+    padding: 8px 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #29293a;
+    color: white;
+
+    cursor: pointer;
+}
+
+.subtask-toggle:hover {
+    background: #3a3a50;
+}
+
+.hidden {
+    display: none;
 }
