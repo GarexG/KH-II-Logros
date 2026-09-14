@@ -1011,6 +1011,10 @@ function renderAchievements() {
     toggleButton.className =
         "subtask-toggle";
 
+    if (isOpen) {
+    toggleButton.classList.add("open");
+    }    
+
     toggleButton.textContent =
         `${isOpen ? "▲" : "▼"} Ver progreso (${completedSubtasks}/${achievement.subtasks.length})`;
 
@@ -1131,15 +1135,20 @@ function updateProgress() {
         ).length;
 
     const percentage =
-        total === 0
-            ? 0
-            : (completed / total) * 100;
+    total === 0
+        ? 0
+        : Math.round((completed / total) * 100);
+
+    const progressFill =
+    document.getElementById("progress-fill");
 
     progressFill.style.width =
-        percentage + "%";
+    `${percentage}%`;    
 
     progressText.textContent =
-        `${completed} / ${total} completados`;
+    `${completed} / ${total} completados · ${percentage}%`;
+
+    
 }
 
 
@@ -1156,9 +1165,17 @@ document
         button.addEventListener("click", () => {
 
             currentFilter =
-                button.dataset.filter;
+    button.dataset.filter;
 
-            renderAchievements();
+document
+    .querySelectorAll(".filters button")
+    .forEach(btn =>
+        btn.classList.remove("active")
+    );
+
+button.classList.add("active");
+
+renderAchievements();
         });
 
     });
@@ -1170,12 +1187,28 @@ document
         button.addEventListener("click", () => {
 
             currentCategory =
-                button.dataset.category;
+    button.dataset.category;
 
-            renderAchievements();
+document
+    .querySelectorAll(".category-filters button")
+    .forEach(btn =>
+        btn.classList.remove("active")
+    );
+
+button.classList.add("active");
+
+renderAchievements();
         });
 
     });
+
+document
+    .querySelector('[data-filter="all"]')
+    ?.classList.add("active");
+
+document
+    .querySelector('[data-category="all"]')
+    ?.classList.add("active");    
 
 syncRelatedAchievements();
 saveSubtaskProgress();    
