@@ -698,6 +698,17 @@ function syncRelatedAchievements() {
     subtaskProgress["seeker"]["Disney Castle"]["Lingering Will"] =
         progress["lingering-will"] === true;
 
+        // Mushroom Master -> Seeker
+    if (
+        !subtaskProgress["seeker"]["Radiant Garden"] ||
+        typeof subtaskProgress["seeker"]["Radiant Garden"] !== "object"
+        ) {
+        subtaskProgress["seeker"]["Radiant Garden"] = {};
+        }
+
+        subtaskProgress["seeker"]["Radiant Garden"]["Completar Mushroom XIII"] =
+        progress["mushroom-master"] === true;
+
         
 }
 
@@ -758,8 +769,134 @@ function setSubtaskComplete(achievement, subtask, checked) {
         subtask.subtasks.forEach(child => {
             subtaskProgress[achievement.id][name][child] =
                 checked;
+              
         });
+
+        subtaskProgress[achievement.id][`${name}-completed`] =
+                checked;  
     }
+}
+
+function syncLinkedSubtaskChange(
+    achievementId,
+    parentName,
+    childName,
+    checked
+) {
+
+    const links = [
+        {
+            fromAchievement: "professor",
+            fromParent: "Absent Silhouettes",
+            fromChild: "Vexen - Agrabah",
+            toAchievement: "seeker",
+            toParent: "Agrabah",
+            toChild: "Vexen - Absent Silhouette"
+        },
+        {
+            fromAchievement: "professor",
+            fromParent: "Absent Silhouettes",
+            fromChild: "Lexaeus - Twilight Town",
+            toAchievement: "seeker",
+            toParent: "Twilight Town",
+            toChild: "Lexaeus - Absent Silhouette"
+        },
+        {
+            fromAchievement: "professor",
+            fromParent: "Absent Silhouettes",
+            fromChild: "Zexion - Olympus Coliseum",
+            toAchievement: "seeker",
+            toParent: "Olympus Coliseum",
+            toChild: "Zexion - Absent Silhouette"
+        },
+        {
+            fromAchievement: "professor",
+            fromParent: "Absent Silhouettes",
+            fromChild: "Marluxia - Beast's Castle",
+            toAchievement: "seeker",
+            toParent: "Beast's Castle",
+            toChild: "Marluxia - Absent Silhouette"
+        },
+        {
+            fromAchievement: "professor",
+            fromParent: "Absent Silhouettes",
+            fromChild: "Larxene - Port Royal",
+            toAchievement: "seeker",
+            toParent: "Port Royal",
+            toChild: "Larxene - Absent Silhouette"
+        }
+    ];
+
+    links.forEach(link => {
+
+        const directMatch =
+            achievementId === link.fromAchievement &&
+            parentName === link.fromParent &&
+            childName === link.fromChild;
+
+        const reverseMatch =
+            achievementId === link.toAchievement &&
+            parentName === link.toParent &&
+            childName === link.toChild;
+
+        if (!directMatch && !reverseMatch) {
+            return;
+        }
+
+        const targetAchievement =
+            directMatch
+                ? link.toAchievement
+                : link.fromAchievement;
+
+        const targetParent =
+            directMatch
+                ? link.toParent
+                : link.fromParent;
+
+        const targetChild =
+            directMatch
+                ? link.toChild
+                : link.fromChild;
+
+        if (!subtaskProgress[targetAchievement]) {
+            subtaskProgress[targetAchievement] = {};
+        }
+
+        if (
+            !subtaskProgress[targetAchievement][targetParent] ||
+            typeof subtaskProgress[targetAchievement][targetParent] !== "object"
+        ) {
+            subtaskProgress[targetAchievement][targetParent] = {};
+        }
+
+        subtaskProgress[targetAchievement][targetParent][targetChild] =
+            checked;
+
+        const targetAchievementData =
+            achievements.find(
+                achievement =>
+                    achievement.id === targetAchievement
+            );
+
+        const targetParentData =
+            targetAchievementData?.subtasks?.find(
+                subtask =>
+                    typeof subtask === "object" &&
+                    subtask.name === targetParent
+            );
+
+        if (targetParentData?.subtasks) {
+
+            const allChildrenCompleted =
+                targetParentData.subtasks.every(
+                    child =>
+                        subtaskProgress[targetAchievement]?.[targetParent]?.[child] === true
+                );
+
+            subtaskProgress[targetAchievement][`${targetParent}-completed`] =
+                allChildrenCompleted;
+        }
+    });
 }
 
 function createNestedSubtasks(achievement, subtask) {
@@ -845,7 +982,14 @@ function createNestedSubtasks(achievement, subtask) {
             subtaskProgress[achievement.id][parentName][child] =
                 childCheckbox.checked;
 
-            const allChildrenCompleted =
+                syncLinkedSubtaskChange(
+                    achievement.id,
+                    parentName,
+                    child,
+                    childCheckbox.checked
+                );
+
+                const allChildrenCompleted =
                 subtask.subtasks.every(item =>
                    subtaskProgress[achievement.id][parentName]?.[item] === true
                 );
@@ -981,11 +1125,12 @@ function renderAchievements() {
 
             achievement.subtasks.forEach(subtask => {
 
-                const subtaskName =
-                    getSubtaskName(subtask);
+            setSubtaskComplete(
+             achievement,
+                subtask,
+                checkbox.checked
+            );
 
-                subtaskProgress[achievement.id][subtaskName] =
-                    checkbox.checked;
             });
 
             saveSubtaskProgress();

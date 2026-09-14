@@ -372,9 +372,7 @@ main {
     background-position: center;
 }
 
-.ahievement h3 {
-    margin-bottom: 7px;
-}
+
 
 .achievement p {
     color: #aaa;
@@ -839,10 +837,7 @@ main {
     line-height: 1.45;
 }
 
-.achievement.completed .achievement-icon {
-    opacity: 0.55;
-    filter: grayscale(40%);
-}
+
 
 .filters button,
 .category-filters button {
@@ -983,48 +978,6 @@ body::after {
         drop-shadow(0 0 7px rgba(140, 145, 210, 0.25));
 
     opacity: 0.9;
-}
-
-.crossed-keyblades-divider {
-    height: 110px;
-}
-
-.crossed-keyblades {
-    position: relative;
-
-    width: 150px;
-    height: 105px;
-
-    flex-shrink: 0;
-}
-
-.crossed-keyblades img {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    width: 145px;
-    height: 55px;
-
-    object-fit: contain;
-
-    transform-origin: center;
-
-    filter:
-        drop-shadow(0 0 7px rgba(140, 145, 210, 0.3));
-}
-
-.oathkeeper {
-    transform:
-        translate(-50%, -50%)
-        rotate(32deg);
-}
-
-.oblivion {
-    transform:
-        translate(-50%, -50%)
-        rotate(-32deg);
 }
 
 .bg-symbol {
