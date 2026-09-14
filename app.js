@@ -956,7 +956,12 @@ function renderAchievements() {
     <div class="achievement-info">
         <h3>${achievement.name}</h3>
         <p>${achievement.description}</p>
-        <span class="category">${achievement.category}</span>
+        <span class="category category-${achievement.category
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "")}">
+        ${achievement.category}
+        </span>
     </div>
 `;
 
