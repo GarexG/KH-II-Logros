@@ -138,11 +138,26 @@ const achievements = [
         category: "Jiminy's Journal"
     },
     {
-        id: "professor",
-        name: "Professor",
-        description: "Completa todas las entradas de personajes del diario.",
-        category: "Jiminy's Journal"
-    },
+    id: "professor",
+    name: "Professor",
+    description: "Completa todas las entradas de personajes del Diario de Pepito.",
+    category: "Jiminy's Journal",
+    subtasks: [
+        "Historia principal completada",
+        {
+            name: "Absent Silhouettes",
+            subtasks: [
+                "Vexen - Agrabah",
+                "Lexaeus - Twilight Town",
+                "Zexion - Olympus Coliseum",
+                "Marluxia - Beast's Castle",
+                "Larxene - Port Royal"
+            ]
+        },
+        "To Rule Them All - 13 Data Battles",
+        "Lingering Will - Disney Castle"
+    ]
+},
     {
         id: "heartless-highbrow",
         name: "Heartless Highbrow",
@@ -156,11 +171,26 @@ const achievements = [
         category: "Jiminy's Journal"
     },
     {
-        id: "treasure-hunter",
-        name: "Treasure Hunter",
-        description: "Completa todas las entradas de tesoros.",
-        category: "Jiminy's Journal"
-    },
+    id: "treasure-hunter",
+    name: "Treasure Hunter",
+    description: "Completa todas las entradas de tesoros.",
+    category: "Jiminy's Journal",
+    subtasks: [
+        "Twilight Town",
+        "Hollow Bastion",
+        "The Land of Dragons",
+        "Beast's Castle",
+        "Olympus Coliseum",
+        "Disney Castle",
+        "Timeless River",
+        "Port Royal",
+        "Agrabah",
+        "Halloween Town",
+        "Pride Lands",
+        "Space Paranoids",
+        "The World That Never Was"
+    ]
+},
     {
         id: "puzzler",
         name: "Puzzler",
@@ -174,35 +204,201 @@ const achievements = [
         category: "Jiminy's Journal"
     },
     {
-        id: "conqueror",
-        name: "Conqueror",
-        description: "Completa todas las entradas de misiones.",
-        category: "Jiminy's Journal"
-    },
+    id: "conqueror",
+    name: "Conqueror",
+    description: "Completa todas las misiones del Diario de Pepito.",
+    category: "Jiminy's Journal",
+    subtasks: [
+        {
+            name: "Twilight Town",
+            subtasks: [
+                "Mail Delivery - Completar en 14 segundos o menos",
+                "Cargo Climb - Completar en 15 segundos o menos",
+                "Grandstander - Conseguir 100 puntos o más",
+                "Poster Duty - Completar en 30 segundos o menos",
+                "Bumble-Buster - Completar en 10 segundos o menos",
+                "Junk Sweep - Completar usando 6 golpes o menos"
+            ]
+        },
+        {
+            name: "Olympus Coliseum",
+            subtasks: [
+                "Phil's Training - Maniac: conseguir 1,000 puntos o más",
+                "Pain and Panic Cup - Conseguir 2,000 puntos o más",
+                "Cerberus Cup - Conseguir 1,000 puntos o más",
+                "Titan Cup - Conseguir 5,000 puntos o más",
+                "Goddess of Fate Cup - Conseguir 3,000 puntos o más",
+                "Pain and Panic Paradox Cup - Conseguir 2,500 puntos o más",
+                "Cerberus Paradox Cup - Conseguir 1,300 puntos o más",
+                "Titan Paradox Cup - Conseguir 10,000 puntos o más",
+                "Hades Paradox Cup - Conseguir 15,000 puntos o más"
+            ]
+        },
+        {
+            name: "Agrabah",
+            subtasks: [
+                "Magic Carpet - Conseguir 65 puntos o más"
+            ]
+        },
+        {
+            name: "100 Acre Wood",
+            subtasks: [
+                "A Blustery Rescue - Conseguir 18,000 puntos o más",
+                "Hunny Slider - Conseguir 8,000 puntos o más",
+                "Balloon Bounce - Conseguir 2,000 puntos o más",
+                "The Expotition - Completar en 90 segundos o menos",
+                "The Hunny Pot - Conseguir 8,000 puntos o más"
+            ]
+        },
+        {
+            name: "Atlantica",
+            subtasks: [
+                "Completar todas las canciones"
+            ]
+        }
+    ]
+},
     {
-        id: "minigame-maniac",
-        name: "Minigame Maniac",
-        description: "Completa todas las entradas de minijuegos.",
-        category: "Jiminy's Journal"
-    },
+    id: "minigame-maniac",
+    name: "Minigame Maniac",
+    description: "Completa todas las entradas de minijuegos del Diario de Pepito.",
+    category: "Jiminy's Journal",
+    subtasks: [
+        {
+            name: "Twilight Town",
+            subtasks: [
+                "Mail Delivery",
+                "Cargo Climb",
+                "Grandstander",
+                "Poster Duty",
+                "Bumble-Buster",
+                "Junk Sweep"
+            ]
+        },
+        {
+            name: "Olympus Coliseum",
+            subtasks: [
+                "Phil's Training",
+                "Pain and Panic Cup",
+                "Cerberus Cup",
+                "Titan Cup",
+                "Goddess of Fate Cup",
+                "Pain and Panic Paradox Cup",
+                "Cerberus Paradox Cup",
+                "Titan Paradox Cup",
+                "Hades Paradox Cup"
+            ]
+        },
+        {
+            name: "Agrabah",
+            subtasks: [
+                "Magic Carpet"
+            ]
+        },
+        {
+            name: "100 Acre Wood",
+            subtasks: [
+                "A Blustery Rescue",
+                "Hunny Slider",
+                "Balloon Bounce",
+                "The Expotition",
+                "The Hunny Pot"
+            ]
+        },
+        {
+            name: "Atlantica",
+            subtasks: [
+                "Ursula's Revenge",
+                "A New Day is Dawning"
+            ]
+        }
+    ]
+},
     {
-        id: "limit-master",
-        name: "Limit Master",
-        description: "Completa todas las entradas de Limits.",
-        category: "Jiminy's Journal"
-    },
+    id: "limit-master",
+    name: "Limit Master",
+    description: "Completa todas las entradas de Limits.",
+    category: "Jiminy's Journal",
+    subtasks: [
+        "Donald - Fantasia",
+        "Donald - Flare Force",
+        "Goofy - Twister Fusion",
+        "Goofy - Teamwork",
+        "Beast - Howling Moon",
+        "Auron - Overdrive",
+        "Mulan - Dragonblaze",
+        "Aladdin - Trick Fantasy",
+        "Jack Skellington - Applause, Applause",
+        "Jack Sparrow - Treasure Isle",
+        "Simba - King's Pride",
+        "Tron - Complete Complement",
+        "Riku - Eternal Session",
+        "Sora - Trinity Limit"
+    ]
+},
     {
-        id: "craftsman",
-        name: "Craftsman",
-        description: "Completa todas las notas de síntesis.",
-        category: "Jiminy's Journal"
-    },
+    id: "craftsman",
+    name: "Craftsman",
+    description: "Completa todas las notas de síntesis.",
+    category: "Jiminy's Journal",
+    subtasks: [
+        "Moogle Level 9 - Primo Moogle",
+        "Tipos de materiales obtenidos - 60/60",
+        "Collection Lists completadas - 54/54",
+        "Recetas sintetizadas - 59/59"
+    ]
+},
     {
-        id: "seeker",
-        name: "Seeker",
-        description: "Completa todas las Character Links.",
-        category: "Jiminy's Journal"
-    },
+    id: "seeker",
+    name: "Seeker",
+    description: "Completa todas las Character Links del Diario de Pepito.",
+    category: "Jiminy's Journal",
+    subtasks: [
+        {
+            name: "Twilight Town",
+            subtasks: [
+                "Setzer - Derrotarlo en Struggle",
+                "Lexaeus - Absent Silhouette"
+            ]
+        },
+        {
+            name: "Agrabah",
+            subtasks: [
+                "Vexen - Absent Silhouette"
+            ]
+        },
+        {
+            name: "Olympus Coliseum",
+            subtasks: [
+                "Zexion - Absent Silhouette"
+            ]
+        },
+        {
+            name: "Beast's Castle",
+            subtasks: [
+                "Marluxia - Absent Silhouette"
+            ]
+        },
+        {
+            name: "Port Royal",
+            subtasks: [
+                "Larxene - Absent Silhouette"
+            ]
+        },
+        {
+            name: "Disney Castle",
+            subtasks: [
+                "Lingering Will"
+            ]
+        },
+        {
+            name: "Radiant Garden",
+            subtasks: [
+                "Completar Mushroom XIII"
+            ]
+        }
+    ]
+},
 
     // NAVE GUMI
     {
@@ -224,11 +420,73 @@ const achievements = [
         category: "Gummi"
     },
     {
-        id: "gummi-collector",
-        name: "Gummi Ship Collector",
-        description: "Consigue todos los planos de naves Gumi.",
-        category: "Gummi"
-    },
+    id: "gummi-ship-collector",
+    name: "Gummi Ship Collector",
+    description: "Consigue todos los planos de naves Gumi.",
+    category: "Gummi",
+    subtasks: [
+        {
+            name: "Highwind",
+            subtasks: [
+                "Highwind",
+                "Highwind Lv. 1",
+                "Highwind Lv. 2",
+                "Highwind Lv. 3",
+                "Highwind Lv. 4",
+                "Highwind Lv. 5",
+                "Highwind Lv. 6",
+                "Highwind Lv. 7",
+                "Highwind Lv. 8",
+                "Highwind Peak",
+                "Highwind α"
+            ]
+        },
+        {
+            name: "Falcon",
+            subtasks: [
+                "Falcon Lv. 1",
+                "Falcon Lv. 2",
+                "Falcon Lv. 3",
+                "Falcon Lv. 4",
+                "Falcon Lv. 5",
+                "Falcon Lv. 6",
+                "Falcon Lv. 7",
+                "Falcon Lv. 8",
+                "Falcon Peak"
+            ]
+        },
+        {
+            name: "Invincible",
+            subtasks: [
+                "Invincible Lv. 1",
+                "Invincible Lv. 2",
+                "Invincible Lv. 3",
+                "Invincible Lv. 4",
+                "Invincible Lv. 5",
+                "Invincible Lv. 6",
+                "Invincible Lv. 7",
+                "Invincible Lv. 8",
+                "Invincible Peak"
+            ]
+        },
+        {
+            name: "Special Models",
+            subtasks: [
+                "PuPu",
+                "Tonberry",
+                "Moogle",
+                "Mandragora",
+                "Chocobo",
+                "Cactuar",
+                "Cait Sith",
+                "Mushroom",
+                "Fenrir",
+                "Kingdom Model",
+                "Secret Model"
+            ]
+        }
+    ]
+},
 
     // MINIJUEGOS
     {
@@ -302,13 +560,7 @@ const achievements = [
     description: "Derrota todas las réplicas Data de Organization XIII.",
     category: "Jefes",
     subtasks: [
-        {
-            name: "Xemnas",
-            subtasks: [
-                "Primera batalla",
-                "Batalla final"
-            ]
-        },
+        "Xemnas",
         "Xigbar",
         "Xaldin",
         "Vexen",
@@ -380,9 +632,17 @@ const searchInput =
 
 
 function saveProgress() {
+
+    syncRelatedAchievements();
+
     localStorage.setItem(
         "kh2Progress",
         JSON.stringify(progress)
+    );
+
+    localStorage.setItem(
+        "kh2SubtaskProgress",
+        JSON.stringify(subtaskProgress)
     );
 }
 
@@ -405,6 +665,40 @@ function saveOpenNestedSubtasks() {
         "kh2OpenNestedSubtasks",
         JSON.stringify(openNestedSubtasks)
     );
+}
+
+function syncRelatedAchievements() {
+
+    // To Rule Them All -> Professor
+    if (!subtaskProgress["professor"]) {
+        subtaskProgress["professor"] = {};
+    }
+
+    subtaskProgress["professor"]["To Rule Them All - 13 Data Battles"] =
+        progress["rule-them-all"] === true;
+
+
+    // Lingering Will -> Professor
+    subtaskProgress["professor"]["Lingering Will - Disney Castle"] =
+        progress["lingering-will"] === true;
+
+
+    // Lingering Will -> Seeker
+    if (!subtaskProgress["seeker"]) {
+        subtaskProgress["seeker"] = {};
+    }
+
+    if (
+        !subtaskProgress["seeker"]["Disney Castle"] ||
+        typeof subtaskProgress["seeker"]["Disney Castle"] !== "object"
+    ) {
+        subtaskProgress["seeker"]["Disney Castle"] = {};
+    }
+
+    subtaskProgress["seeker"]["Disney Castle"]["Lingering Will"] =
+        progress["lingering-will"] === true;
+
+        
 }
 
 function getSubtaskName(subtask) {
@@ -651,17 +945,20 @@ function renderAchievements() {
             : "achievement";
 
     card.innerHTML = `
-        <input
-            type="checkbox"
-            ${completed ? "checked" : ""}
-        >
+    <input type="checkbox" ${completed ? "checked" : ""}>
 
-        <div>
-            <h3>${achievement.name}</h3>
-            <p>${achievement.description}</p>
-            <span class="category">${achievement.category}</span>
-        </div>
-    `;
+    <img
+        class="achievement-icon"
+        src="assets/achievements/${achievement.id}.jpg"
+        alt="${achievement.name}"
+    >
+
+    <div class="achievement-info">
+        <h3>${achievement.name}</h3>
+        <p>${achievement.description}</p>
+        <span class="category">${achievement.category}</span>
+    </div>
+`;
 
     const checkbox =
         card.querySelector("input");
@@ -880,6 +1177,8 @@ document
 
     });
 
+syncRelatedAchievements();
+saveSubtaskProgress();    
 
 renderAchievements();
 updateProgress();

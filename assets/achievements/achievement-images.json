@@ -1,0 +1,252 @@
+[
+  {
+    "id": "proud-player",
+    "name": "Proud Player",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/c3a521a63d96776194fa7f41d2da5e168e4750dc.jpg"
+  },
+  {
+    "id": "ambitious-adventurer",
+    "name": "Ambitious Adventurer",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/e083b3174b036e7967fb6e3ca7e960a8d44078d1.jpg"
+  },
+  {
+    "id": "level-master",
+    "name": "Level Master",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/38a54da792a85a71ec36aaa1c596a5d99445395b.jpg"
+  },
+  {
+    "id": "my-hero",
+    "name": "My Hero",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/1b1824e3df1498321477b2ef4299004a071d204d.jpg"
+  },
+  {
+    "id": "lingering-will",
+    "name": "Lingering Will",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/0681241b79b5d4263ad14610ee8292952ab7f6e8.jpg"
+  },
+  {
+    "id": "one-winged-angel",
+    "name": "One-Winged Angel",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/34f020ff592f1048d469047a0fce86fccf206a05.jpg"
+  },
+  {
+    "id": "rule-them-all",
+    "name": "To Rule Them All",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/d76570d406bdd1841e0c025a73a1169e0f68c71e.jpg"
+  },
+  {
+    "id": "mushroom-master",
+    "name": "Mushroom Master",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/34d362061b1d589cb67cd9df19806728a994d400.jpg"
+  },
+  {
+    "id": "rookie",
+    "name": "Rookie",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/e0e8e9304b0871801240dffc9c1f0253902379ec.jpg"
+  },
+  {
+    "id": "novice-hero",
+    "name": "Novice Hero",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/91c6541ee37af212e19c09724b24a0410889a5db.jpg"
+  },
+  {
+    "id": "artisan-hero",
+    "name": "Artisan Hero",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/60e4aaf279aa3d7c1927992d3d1a91a47eea4cf9.jpg"
+  },
+  {
+    "id": "true-hero",
+    "name": "True Hero",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/94a69b60fcbf5fff11cdfc951225fe383100c626.jpg"
+  },
+  {
+    "id": "coliseum-competitor",
+    "name": "Coliseum Competitor",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/556421603ac0bd49245b25f807f5c53cd4b90f6e.jpg"
+  },
+  {
+    "id": "coliseum-star",
+    "name": "Coliseum Star",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/67b004c231651a9ee23149fd82ba410999c58e88.jpg"
+  },
+  {
+    "id": "hero-of-the-coliseum",
+    "name": "Hero of the Coliseum",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/081bafb71c0adf5d2f98a5c4681f0e8b549a6743.jpg"
+  },
+  {
+    "id": "coliseum-champion",
+    "name": "Coliseum Champion",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/7947c2503e9fdb254e0b20036d239f0a59c86d6d.jpg"
+  },
+  {
+    "id": "summers-end",
+    "name": "Summer's End",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/107401f4b55a09808d63bf4dbda14ff715bde89d.jpg"
+  },
+  {
+    "id": "timeless-world",
+    "name": "A Timeless World",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/0c0f37404889a22a83e92d8fad913adf70ee9e7b.jpg"
+  },
+  {
+    "id": "above-honor",
+    "name": "Above Honor",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/dfddd984ac4f25d7f58029075a47b901be347e44.jpg"
+  },
+  {
+    "id": "budding-romance",
+    "name": "A Budding Romance",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/3b87abd0237dff72a416f2bd56a2856560b60561.jpg"
+  },
+  {
+    "id": "hail-the-hero",
+    "name": "Hail the Hero",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/b83d60aa27deb43fa4c74720a33e31b575913087.jpg"
+  },
+  {
+    "id": "lifting-the-curse",
+    "name": "Lifting the Curse",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/5f78b84ba6584d9f8fbdbdec004da64b031a82e1.jpg"
+  },
+  {
+    "id": "what-friends-are-for",
+    "name": "What Friends Are For",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/d8a3b3fe4dddd3cf4bc93bccaba66927e5518d36.jpg"
+  },
+  {
+    "id": "gift-of-love",
+    "name": "The Gift of Love",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/d7973744a42d46e888389204ed3ea08be6ba5b71.jpg"
+  },
+  {
+    "id": "return-of-the-king",
+    "name": "Return of the King",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/e92185d87de38fc6347ff3820a22799269ba7951.jpg"
+  },
+  {
+    "id": "electric-spark",
+    "name": "Electric Spark",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/9550b5d2a9cd48310d290ef2fb46811ce538b798.jpg"
+  },
+  {
+    "id": "always-together",
+    "name": "Always Together",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/379cfeba6e40d875f27930567e0bbeeab151e3bb.jpg"
+  },
+  {
+    "id": "kindred-spirits",
+    "name": "Kindred Spirits",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/f4a7a49d31d2609ba69cba756514368a600efc2d.jpg"
+  },
+  {
+    "id": "taste-of-the-past",
+    "name": "A Taste of the Past",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/e7ec08cbf867ae0bded34b4a7214c6594041972e.jpg"
+  },
+  {
+    "id": "reunion",
+    "name": "Reunion",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/92042fe466619626f8b5c4b26d2ef8a642f865b6.jpg"
+  },
+  {
+    "id": "searcher",
+    "name": "Searcher",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/f045003af5fd532967ebcd5349cf654df8d8c6c5.jpg"
+  },
+  {
+    "id": "professor",
+    "name": "Professor",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/26745f8b27aebe1d1fd7b6dba8990fec5f33968a.jpg"
+  },
+  {
+    "id": "heartless-highbrow",
+    "name": "Heartless Highbrow",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/0df69db07647baf93b1ce75974e3ad488b25e693.jpg"
+  },
+  {
+    "id": "nobody-know-it-all",
+    "name": "Nobody Know-It-All",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/1795f1776338ac3abf7856faf14e2129a0ffa496.jpg"
+  },
+  {
+    "id": "treasure-hunter",
+    "name": "Treasure Hunter",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/bbd882af6a3ab46baf8240cc18082f0e57fdfd06.jpg"
+  },
+  {
+    "id": "puzzler",
+    "name": "Puzzler",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/f2c2c9de9d82dd716433256aabc07548e197d0a7.jpg"
+  },
+  {
+    "id": "navigator",
+    "name": "Navigator",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/95138fca3de14ec2ab33e586b8d3c259794e5588.jpg"
+  },
+  {
+    "id": "conqueror",
+    "name": "Conqueror",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/08cc59dec6fd51959131471ee407998ee5a08451.jpg"
+  },
+  {
+    "id": "minigame-maniac",
+    "name": "Minigame Maniac",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/6f40d857b0a5c2875e24a6801ae92fa079202fc2.jpg"
+  },
+  {
+    "id": "limit-master",
+    "name": "Limit Master",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/b125a7740c9a59cec9d3be29b462f68663691ecf.jpg"
+  },
+  {
+    "id": "craftsman",
+    "name": "Craftsman",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/d5433102512b26bf827c9b52ce4655c64d4fd161.jpg"
+  },
+  {
+    "id": "seeker",
+    "name": "Seeker",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/487a554afc86057d8c6c39da0ecc6faf9da279e3.jpg"
+  },
+  {
+    "id": "pro-skater",
+    "name": "Pro Skater",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/69b5c9938e68def274d856597cdcde2f79c4d222.jpg"
+  },
+  {
+    "id": "struggle-champion",
+    "name": "Struggle Champion",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/f43e43c09d301ca7493139d53050edbbf87c6f6e.jpg"
+  },
+  {
+    "id": "corroded-by-darkness",
+    "name": "Corroded by Darkness",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/0cb90c8aaa431b63586f77265d3954a6036662a6.jpg"
+  },
+  {
+    "id": "veteran-pilot",
+    "name": "Veteran Pilot",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/f927188312dfaacafdf4ba86c8a85ad84193cd14.jpg"
+  },
+  {
+    "id": "ace-pilot",
+    "name": "Ace Pilot",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/951bd5d70d6a58b055593b25bc7e282d3b3e0f86.jpg"
+  },
+  {
+    "id": "top-gun",
+    "name": "Top Gun",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/664535db3495c7acf9506e5acf91c3521b873539.jpg"
+  },
+  {
+    "id": "gummi-ship-collector",
+    "name": "Gummi Ship Collector",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/22718bd854e170a406252cd2ce3a8e66a05a79aa.jpg"
+  },
+  {
+    "id": "critical-competitor",
+    "name": "Critical Competitor",
+    "img": "https://shared.fastly.steamstatic.com/community_assets/images/apps/2552430/7194a91fd782f87331fe40a184809b2376b5b3e2.jpg"
+  }
+]
